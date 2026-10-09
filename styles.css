@@ -1,0 +1,142 @@
+:root {
+  --orange: #FF7A00;
+  --charcoal: #111827;
+  --slate: #6B7280;
+  --cream: #F8F7F4;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--charcoal);
+  background-color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding-top: clamp(3.5rem, 10vh, 7rem);
+  overflow: hidden;
+  /* soft dusk sky: pale grey at the top warming to peach where the photo begins */
+  background: linear-gradient(
+    to bottom,
+    #ECECEA 0%,
+    var(--cream) 38%,
+    #F6E6D6 62%,
+    #F3D7BC 100%
+  );
+}
+
+.hero__content {
+  position: relative;
+  z-index: 1;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 40rem;
+  text-align: center;
+}
+
+.logo {
+  display: block;
+  width: clamp(190px, 46vw, 280px);
+  height: auto;
+  margin-bottom: clamp(3rem, 10vh, 6rem);
+}
+
+.hero__title {
+  margin: 0;
+  max-width: 13ch;
+  font-size: clamp(2.1rem, 6vw, 3.6rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  color: var(--charcoal);
+}
+
+.hero__divider {
+  display: block;
+  width: 64px;
+  height: 3px;
+  margin: clamp(1.5rem, 3.5vh, 2.25rem) 0;
+  border-radius: 2px;
+  background: var(--orange);
+}
+
+.hero__subtitle {
+  margin: 0;
+  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-weight: 500;
+  color: var(--charcoal);
+  opacity: 0.88;
+}
+
+.hero__photo {
+  flex: 1 0 auto;
+  width: 100%;
+  min-height: 46vh;
+  min-height: 46svh;
+  margin-top: -5rem;
+  background: url("assets/hero.jpg") 50% 34% / cover no-repeat;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 38%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 38%);
+}
+
+/* ---------- Larger screens: show more of the landscape ---------- */
+
+@media (min-width: 900px) {
+  .hero {
+    padding-top: clamp(3rem, 8vh, 5.5rem);
+  }
+
+  .logo {
+    margin-bottom: clamp(2.5rem, 6vh, 4rem);
+  }
+
+  .hero__photo {
+    min-height: 40vh;
+    background-position: 50% 40%;
+  }
+}
+
+/* ---------- Entrance animation ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .hero__content > * {
+    animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero__title    { animation-delay: 0.12s; }
+  .hero__divider  { animation-delay: 0.22s; }
+  .hero__subtitle { animation-delay: 0.3s; }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+  }
+}
