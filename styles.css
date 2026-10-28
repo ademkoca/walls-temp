@@ -1,8 +1,9 @@
+/* Walls brand "Tlocrt": ink wall lines on white paper, one green door. */
 :root {
-  --orange: #FF7A00;
-  --charcoal: #111827;
-  --slate: #6B7280;
-  --cream: #F8F7F4;
+  --paper: #FFFFFF;
+  --ink: #15181C;
+  --green: #17775F;
+  --graphite: #5E636A;
 }
 
 *,
@@ -20,9 +21,9 @@ body {
 body {
   min-height: 100vh;
   min-height: 100svh;
-  font-family: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  color: var(--charcoal);
-  background-color: var(--cream);
+  font-family: "Hanken Grotesk", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background-color: var(--paper);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -36,22 +37,15 @@ body {
   align-items: center;
   min-height: 100vh;
   min-height: 100svh;
-  padding-top: clamp(3.5rem, 10vh, 7rem);
+  padding-top: clamp(3rem, 9vh, 6rem);
   overflow: hidden;
-  /* soft dusk sky: pale grey at the top warming to peach where the photo begins */
-  background: linear-gradient(
-    to bottom,
-    #ECECEA 0%,
-    var(--cream) 38%,
-    #F6E6D6 62%,
-    #F3D7BC 100%
-  );
+  background: var(--paper);
 }
 
 .hero__content {
   position: relative;
   z-index: 1;
-  padding: 0 1.5rem;
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,36 +56,49 @@ body {
 
 .logo {
   display: block;
-  width: clamp(190px, 46vw, 280px);
+  width: clamp(112px, 30vw, 150px);
   height: auto;
-  margin-bottom: clamp(3rem, 10vh, 6rem);
+  margin-bottom: clamp(2.5rem, 8vh, 5rem);
 }
 
 .hero__title {
   margin: 0;
   max-width: 13ch;
-  font-size: clamp(2.1rem, 6vw, 3.6rem);
-  font-weight: 600;
-  line-height: 1.12;
-  letter-spacing: -0.015em;
-  color: var(--charcoal);
+  font-size: clamp(2.25rem, 6.4vw, 4rem);
+  font-weight: 800;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  color: var(--ink);
 }
 
 .hero__divider {
   display: block;
-  width: 64px;
-  height: 3px;
-  margin: clamp(1.5rem, 3.5vh, 2.25rem) 0;
-  border-radius: 2px;
-  background: var(--orange);
+  width: 132px;
+  height: 44px;
+  margin: clamp(1.5rem, 3.5vh, 2.25rem) 0 clamp(1rem, 2.5vh, 1.5rem);
+  overflow: visible;
+}
+
+.hero__divider .wall {
+  fill: var(--ink);
+}
+
+.hero__divider .door {
+  fill: var(--green);
+}
+
+.hero__divider .swing {
+  fill: none;
+  stroke: var(--graphite);
+  stroke-width: 1;
+  stroke-dasharray: 2 3;
 }
 
 .hero__subtitle {
   margin: 0;
-  font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+  font-size: clamp(1.1rem, 2.2vw, 1.375rem);
   font-weight: 500;
-  color: var(--charcoal);
-  opacity: 0.88;
+  color: var(--graphite);
 }
 
 .hero__photo {
@@ -99,17 +106,18 @@ body {
   width: 100%;
   min-height: 46vh;
   min-height: 46svh;
-  margin-top: -5rem;
+  margin-top: -4rem;
   background: url("assets/hero.jpg") 50% 34% / cover no-repeat;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 38%);
-          mask-image: linear-gradient(to bottom, transparent 0%, #000 38%);
+  /* the photo's pale sky dissolves into the paper */
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 40%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 40%);
 }
 
 /* ---------- Larger screens: show more of the landscape ---------- */
 
 @media (min-width: 900px) {
   .hero {
-    padding-top: clamp(3rem, 8vh, 5.5rem);
+    padding-top: clamp(3rem, 7vh, 5rem);
   }
 
   .logo {
@@ -118,11 +126,12 @@ body {
 
   .hero__photo {
     min-height: 40vh;
+    margin-top: -1.5rem;
     background-position: 50% 40%;
   }
 }
 
-/* ---------- Entrance animation ---------- */
+/* ---------- Entrance: content rises, then the door swings open ---------- */
 
 @media (prefers-reduced-motion: no-preference) {
   .hero__content > * {
@@ -133,10 +142,32 @@ body {
   .hero__divider  { animation-delay: 0.22s; }
   .hero__subtitle { animation-delay: 0.3s; }
 
+  .hero__divider .door {
+    transform-box: view-box;
+    transform-origin: 45.5px 36px;
+    animation: open 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.5s both;
+  }
+
+  .hero__divider .swing {
+    animation: fade 0.4s ease-out 0.9s both;
+  }
+
   @keyframes rise {
     from {
       opacity: 0;
       transform: translateY(14px);
+    }
+  }
+
+  @keyframes open {
+    from {
+      transform: rotate(90deg);
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
     }
   }
 }

@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Walls Real Estate — Coming soon</title>
   <meta name="description" content="Walls Real Estate — our new website is under construction. Veb sajt je u izradi.">
-  <meta name="theme-color" content="#F8F7F4">
+  <meta name="theme-color" content="#FFFFFF">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600&family=Montserrat:wght@500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;800&display=swap" rel="stylesheet">
 
   <link rel="preload" href="assets/hero.jpg" as="image">
   <link rel="stylesheet" href="styles.css">
@@ -23,28 +23,18 @@
   -->
   <main class="hero">
     <div class="hero__content">
-      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="62 40 246 204" role="img" aria-labelledby="logo-title">
-        <title id="logo-title">Walls Real Estate</title>
-        <g>
-          <path fill="#FF6A00" d="M137 94 155 76 155 146 137 146Z"/>
-          <path fill="#FF6A00" d="M163 68 181 50 181 102 163 120Z"/>
-          <path fill="#FF6A00" d="M189 50 207 68 207 120 189 102Z"/>
-          <path fill="#171B1E" d="M215 76 233 94 233 146 215 146Z"/>
-          <g fill="#FF6A00">
-            <rect x="177" y="124" width="6" height="6"/>
-            <rect x="187" y="124" width="6" height="6"/>
-            <rect x="177" y="134" width="6" height="6"/>
-            <rect x="187" y="134" width="6" height="6"/>
-          </g>
-        </g>
-        <g fill="#171B1E" text-anchor="middle" font-family="Montserrat, 'Avenir Next', Arial, sans-serif">
-          <text x="185" y="202" font-size="47" font-weight="600" letter-spacing="12">WALLS</text>
-          <text x="185" y="235" font-size="15" font-weight="500" letter-spacing="6.1">REAL ESTATE</text>
-        </g>
-      </svg>
+      <img class="logo" src="assets/walls-logo.svg" width="129" height="164" alt="Walls Real Estate">
 
       <h1 class="hero__title">Website is under construction</h1>
-      <span class="hero__divider" aria-hidden="true"></span>
+
+      <!-- A wall drawn as on a floor plan, with its one green door standing open -->
+      <svg class="hero__divider" viewBox="0 0 120 40" aria-hidden="true">
+        <rect class="wall" x="0" y="34" width="44" height="4"/>
+        <rect class="wall" x="76" y="34" width="44" height="4"/>
+        <path class="swing" d="M76 36A30.5 30.5 0 0 0 45.5 5.5"/>
+        <rect class="door" x="44" y="5" width="3" height="31"/>
+      </svg>
+
       <p class="hero__subtitle" lang="sr-Latn">Veb sajt je u izradi.</p>
     </div>
     <div class="hero__photo" aria-hidden="true"></div>
